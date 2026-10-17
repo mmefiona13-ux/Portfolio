@@ -1,0 +1,1 @@
+document.querySelector('.menu-toggle')?.addEventListener('click',e=>{const n=document.querySelector('.nav-links'),open=n.classList.toggle('open');e.currentTarget.setAttribute('aria-expanded',open)});document.querySelectorAll('[data-image]').forEach(b=>b.addEventListener('click',()=>document.querySelector('#main-image').src=b.dataset.image));
