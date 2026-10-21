@@ -42,3 +42,8 @@ INSERT INTO products(name,brand,category_id,price,storage,`condition`,quality,st
 ('iPhone 16 Pro Max','Apple',9,195000,'256GB','New','Brand new, sealed device',4,'Big display, big impact, and a refined Pro experience.','Contact Collins M for the complete model specifications.'),
 ('iPhone 15 Pro','Apple',8,145000,'128GB','Used','Excellent condition, carefully selected',1,'Titanium design with capable Pro performance.','Contact Collins M for the complete model specifications.');
 INSERT INTO product_colors(product_id,color_name) VALUES (1,'Titanium Black'),(1,'Titanium Gray'),(2,'Phantom Black'),(3,'Desert Titanium'),(4,'Natural Titanium');
+INSERT INTO product_images(product_id,image_path) VALUES
+(1,'assets/images/phones/galaxy-s25-ultra.svg'),
+(2,'assets/images/phones/galaxy-z-fold.svg'),
+(3,'assets/images/phones/iphone-16-pro-max.svg'),
+(4,'assets/images/phones/iphone-15-pro.svg');

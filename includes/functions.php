@@ -12,7 +12,11 @@ function csrf_token(): string { if (empty($_SESSION['csrf'])) $_SESSION['csrf'] 
 function verify_csrf(): void { if (!hash_equals($_SESSION['csrf'] ?? '', $_POST['csrf'] ?? '')) { http_response_code(419); exit('Invalid request token. Please go back and try again.'); } }
 function flash(string $type, string $message): void { $_SESSION['flash'] = [$type, $message]; }
 function show_flash(): void { if (!empty($_SESSION['flash'])) { [$type, $message] = $_SESSION['flash']; unset($_SESSION['flash']); echo '<div class="notice notice-' . e($type) . '">' . e($message) . '</div>'; } }
-function image_url(?string $path): string { return $path ? e($path) : 'assets/images/phone-placeholder.svg'; }
+function image_url(?string $path): string {
+    $fallback = 'assets/images/phone-placeholder.svg';
+    if (!$path) return $fallback;
+    return preg_match('#^(?:assets/images/phones|uploads/products)/[A-Za-z0-9._/-]+$#', $path) ? e($path) : $fallback;
+}
 function whatsapp_url(): string { return 'https://wa.me/' . WHATSAPP_PHONE . '?text=' . rawurlencode(WHATSAPP_MESSAGE); }
 function cart(): array { return $_SESSION['cart'] ?? []; }
 function cart_count(): int { return array_sum(array_map('intval', cart())); }
