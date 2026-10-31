@@ -1,0 +1,25 @@
+COLLINS M PHP WEBSITE CHATBOT — CODEX IMPLEMENTATION PROMPT
+
+You are working in my existing Collins M PHP website. Integrate the chatbot below into the current site, matching its layout, styles, PHP conventions, and accessibility patterns. Inspect the project before editing. Make the smallest complete change, preserve existing functionality, and do not restructure unrelated code.
+
+CHAT SERVICE
+- n8n webhook endpoint: [PASTE YOUR ACTIVE N8N PRODUCTION WEBHOOK URL HERE]
+- Method: POST
+- JSON request: { "message": "visitor message", "history": [{ "role": "user|assistant", "content": "..." }] }
+- JSON success response: { "reply": "assistant response" }
+- Workflow accepts messages up to 4,000 characters and the latest 10 history turns.
+
+IMPLEMENTATION REQUIREMENTS
+1. Add a compact, responsive chat launcher and panel consistent with the website. Include a clear title (“Collins M Assistant”), message list, text input, send button, loading state, and visible error/retry message.
+2. Keep the webhook URL in a clearly named site configuration value or PHP-rendered setting. Do not expose an OpenAI API key or other secret in browser code; only the n8n webhook URL belongs in the front end.
+3. Use fetch() to POST JSON to the configured webhook. Display its reply. Maintain a short in-memory conversation history, send only the latest 10 turns, and clear it on reload or when the visitor chooses a clear-chat action.
+4. Render user and assistant text safely as text (such as textContent), never injected HTML. Do not persist conversations, collect sensitive personal information, or log message contents.
+5. Support Enter to send and Shift+Enter for a newline. Prevent duplicate submissions while a request is pending. Add accessible names, keyboard operation, visible focus, and live announcements for new messages, loading, and errors.
+6. Handle network errors, non-2xx responses, invalid JSON, and missing `reply` without breaking the page. Keep the visitor's unsent text available for retry.
+7. Scope CSS to the widget. Respect reduced-motion preferences and small screens. Do not add dependencies unless the project already uses them.
+8. If the exact endpoint has not been supplied, leave a conspicuous configuration placeholder and document where to set it; do not guess.
+
+WORKFLOW
+First inspect the project structure and identify the correct layout/template, asset locations, and frontend conventions. Implement the widget and configuration, summarize changed files, and provide concise manual verification steps. Do not run tests unless I ask.
+
+Before finishing, confirm the webhook URL is not a secret, no API key was added to frontend files, and message rendering is safe against HTML injection.
