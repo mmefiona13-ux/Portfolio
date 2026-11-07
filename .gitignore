@@ -1,1 +1,14 @@
 .vscode
+
+# Private configuration
+.env
+.env.*
+!.env.example
+
+# Local backups
+/backups/
+/backup_*/
+*.bak
+*.backup*
+*.before_*
+*.before-*

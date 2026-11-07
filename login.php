@@ -4,6 +4,7 @@ if (!empty($_SESSION['admin_id'])) { header('Location: admin/dashboard.php'); ex
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verify_csrf();
     $email = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
+$password = $_POST['password'] ?? '';
     $password = $_POST['password'] ?? '';
     $statement = db()->prepare('SELECT * FROM admins WHERE email=?');
     $statement->execute([$email]);
